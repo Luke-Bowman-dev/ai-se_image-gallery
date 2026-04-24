@@ -231,3 +231,32 @@ button:disabled {
   align-items: center;
   padding-top: 100px;
 }
+
+@media (max-width: 600px) {
+  .page {
+    padding: 22px 20px 32px;
+  }
+  .header {
+    padding-bottom: 42px;
+  }
+  .header__title {
+    font-size: 20px;
+  }
+  .gallery__title {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  .wrapping-row {
+    justify-content: center;
+  }
+  .gallery__image {
+    width: 353px;
+    height: 244px;
+    border-radius: 12px;
+  }
+  .gallery__new-image-btn {
+    width: 353px;
+    height: 244px;
+    border-radius: 12px;
+  }
+}
