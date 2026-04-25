@@ -4,7 +4,8 @@ import { renderCarouselView } from "./carousel.js";
 const homeSection = document.querySelector("#home");
 const carouselSection = document.querySelector("#carousel");
 const notFoundSection = document.querySelector("#not-found");
-
+const confirmationModalEl = document.querySelector("#confirmation-modal");
+let currentImageEl = null;
 function renderHomeView() {
   homeSection.style.display = "block";
   carouselSection.style.display = "none";
@@ -28,7 +29,8 @@ function renderHomeView() {
 
     const deleteBtn = cloneEl.querySelector(".gallery__btn_type_delete");
     deleteBtn.addEventListener("click", () => {
-      cloneEl.remove();
+      confirmationModalEl.classList.toggle("modal_visible");
+      currentImageEl = cloneEl;
     });
 
     return cloneEl;
@@ -66,6 +68,18 @@ function router() {
     renderNotFoundView();
   }
 }
+const cancelButtonEl = document.querySelector(".modal__btn_type_cancel");
+cancelButtonEl.addEventListener("click", () => {
+  confirmationModalEl.classList.toggle("modal_visible");
+  currentImageEl = null;
+});
+
+const confirmButtonEl = document.querySelector(".modal__btn_type_confirm");
+confirmButtonEl.addEventListener("click", () => {
+  currentImageEl.remove();
+  confirmationModalEl.classList.toggle("modal_visible");
+  currentImageEl = null;
+});
 
 window.addEventListener("DOMContentLoaded", router);
 window.addEventListener("hashchange", router);
